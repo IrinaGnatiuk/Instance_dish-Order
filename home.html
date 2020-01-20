@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block main %}
+    <div class="section-top">
+        <img src="{% static 'img/zima.jpg' %}" width="100%"class="img-responsive">
+    </div>
+    <div  class="section section1">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1 class="text-center">
+                        ПИЦЦА
+                    </h1>
+                 </div>
+                {% for image in dishes_img_pizza %}
+
+                {%include 'dish_item.html'%}
+
+                {% endfor %}
+
+            </div>
+        </div>
+    </div>
+<div class="section section-delivery">
+    <div>
+        <h3> При заказе от 200 грн. доставка бесплатная </h3>
+    </div>
+</div>
+<div  class="section section2 sushi-container">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1 class="text-center">
+                        CУШИ
+                    </h1>
+                 </div>
+                {% for image in dishes_img_sushi %}
+
+                {%include 'dish_item.html'%}
+
+                {% endfor %}
+
+            </div>
+        </div>
+    </div>
+<div  class="section section3 drinks-container">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1 class="text-center">
+                        НАПИТКИ
+                    </h1>
+                 </div>
+                {% for image in drinks_img %}
+
+                {%include 'drink_item.html'%}
+
+                {% endfor %}
+
+            </div>
+        </div>
+    </div>
+{% endblock %}

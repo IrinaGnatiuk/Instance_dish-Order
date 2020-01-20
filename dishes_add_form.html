@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+{%extends "base.html"%}
+{%block main%}
+<html lang="ru">
+<h1>Dishes__add</h1>
+<div>
+             {% for dish in list_dish %}
+    <li>{{ dish.name }}  -  цена {{ dish.price }} грн. </li>
+    <form method="POST"  class="post-form" action = "/dishes/add/">{% csrf_token %}
+    <input type="text"  value = {{dish.id}} hidden name = "dish_id">
+    <label for="number">Количество блюд</label>
+    <input type="number"  name = "count">
+        <button type="submit" class="save btn btn-default">Добавить в корзину</button>
+        </form>
+    {% endfor %}
+    <form action = '/order/' method="GET">
+    <input type = "submit"  value  = "Заказ">
+
+</form>
+
+</div>
+{{order}}
+<a href  = "/ingredients"> Ingredient</a>
+<a href  = "/dishes"> Dishes</a>
+<a href  = "/drinks"> Drinks</a>
+<a href  = '/'> Start </a>
+</html>
+{%endblock%}

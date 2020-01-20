@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+                <div class="col-lg-3">
+                    <div class="dish-item">
+                        <div>
+                            <a href="{%url 'dish' image.dish.id %}">
+                            <img src="{{image.image.url}}" class="img-responsive">
+                            </a>
+                        </div>
+                        {% if image.dish.discount %}
+                        <div class="discount-container">
+                            <span>-{{image.dish.discount}} %</span>
+                        </div>
+                        {%endif%}
+
+                        <h4>{{image.dish.name}}</h4>
+                        <p>
+                            {{image.dish.short_description|truncatechars_html:150}}
+                        </p>
+                        <div>
+                            {{image.dish.price}}  грн.
+                        </div>
+                        <form id="form_dish" method="POST"  class="add-to-cart-btn" class="post-form" action = "/dishes/add/">{% csrf_token %}
+                     <div class="form-group">
+                         <input  type="hidden"  value = {{image.dish.id}} hidden name = "dish_id">
+                         <input  type="hidden"  hidden name = "count" value= "1" class="form-control">
+                     </div>
+                     <div class="form-group">
+                         <div class="add-to-cart-btn">
+        <button type="submit" class="btn btn-success">
+            Добавить в корзину
+        </button>
+                     </div>
+                        </form>
+                            </div>
+                    </div>
+                </div>
+</body>
+</html>
